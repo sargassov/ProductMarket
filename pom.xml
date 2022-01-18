@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>market</groupId>
-    <artifactId>product-market</artifactId>
+    <artifactId>ProductMmarket</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>product-market</name>
-    <description>Web Store made on Spring Framework</description>
+    <name>market</name>
+    <description>First Spring Web Project</description>
 
     <properties>
         <java.version>11</java.version>
@@ -60,6 +60,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.6.0</version>
         </dependency>
     </dependencies>
 

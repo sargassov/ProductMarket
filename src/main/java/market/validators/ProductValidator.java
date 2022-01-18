@@ -1,5 +1,6 @@
 package market.validators;
 
+
 import market.dto.ProductDto;
 import market.exceptions.ValidationException;
 import org.springframework.stereotype.Component;

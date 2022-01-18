@@ -1,9 +1,10 @@
 package market.services;
 
+
+import lombok.RequiredArgsConstructor;
 import market.entities.Role;
 import market.entities.User;
 import market.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

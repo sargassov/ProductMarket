@@ -1,12 +1,13 @@
 package market.controllers;
 
+
+import lombok.RequiredArgsConstructor;
 import market.converters.ProductConverter;
 import market.dto.ProductDto;
 import market.entities.Product;
 import market.exceptions.ResourceNotFoundException;
 import market.services.ProductsService;
 import market.validators.ProductValidator;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +24,13 @@ public class ProductsController {
             @RequestParam(name = "p", defaultValue = "1") Integer page,
             @RequestParam(name = "min_price", required = false) Integer minPrice,
             @RequestParam(name = "max_price", required = false) Integer maxPrice,
-            @RequestParam(name = "title_part", required = false) String titlePart
+            @RequestParam(name = "title_part", required = false) String titlePart,
+            @RequestParam(name = "category", required = false) String category
     ) {
         if (page < 1) {
             page = 1;
         }
-        return productsService.findAll(minPrice, maxPrice, titlePart, page).map(
+        return productsService.findAll(minPrice, maxPrice, titlePart, page, category).map(
                 p -> productConverter.entityToDto(p)
         );
     }

@@ -1,11 +1,11 @@
 package market.controllers;
 
+import lombok.RequiredArgsConstructor;
 import market.dto.JwtRequest;
 import market.dto.JwtResponse;
 import market.exceptions.AppError;
 import market.services.UserService;
 import market.utils.JwtTokenUtil;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,9 +1,10 @@
 package market.dto;
 
-import market.entities.Product;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import market.entities.Product;
 
 @Data
 @NoArgsConstructor

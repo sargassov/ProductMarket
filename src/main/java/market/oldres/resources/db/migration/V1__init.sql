@@ -1,28 +1,14 @@
-create table categories(
-  id bigserial primary key,
-  title varchar (40)
-);
-
-insert into categories (title)
-values ('food'), ('clothes');
-
 create table products
 (
-    id            bigserial primary key,
-    title         varchar(255),
-    price         int,
-    categories_id   bigserial REFERENCES categories(id),
+    id         bigserial primary key,
+    title      varchar(255),
+    price      int,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp
 );
 
-insert into products (title, price, categories_id)
-values ('Milk', 100, 1),
-       ('Bread', 80, 1),
-       ('Cheese', 90, 1),
-       ('Caviar', 490, 1),
-       ('T-Short', 2490, 2),
-       ('Jeans', 3490, 2);
+insert into products (title, price)
+values ('Milk', 100);
 
 create table users
 (
@@ -87,7 +73,7 @@ create table order_items
 );
 
 insert into orders (user_id, total_price, address, phone)
-values (1, 200, 'address', '12345'), (2, 2330, 'address1', '12345');
+values (1, 200, 'address', '12345'), (2, 450, 'address111', '12345');
 
 insert into order_items (product_id, order_id, quantity, price_per_product, price)
 values (1, 1, 2, 100, 200);

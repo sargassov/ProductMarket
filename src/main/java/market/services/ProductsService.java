@@ -1,11 +1,12 @@
 package market.services;
 
+
+import lombok.RequiredArgsConstructor;
 import market.dto.ProductDto;
 import market.entities.Product;
 import market.exceptions.ResourceNotFoundException;
 import market.repositories.ProductsRepository;
 import market.repositories.specifications.ProductsSpecifications;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
@@ -19,7 +20,8 @@ import java.util.Optional;
 public class ProductsService {
     private final ProductsRepository productsRepository;
 
-    public Page<Product> findAll(Integer minPrice, Integer maxPrice, String partTitle, Integer page) {
+    public Page<Product> findAll(Integer minPrice, Integer maxPrice, String partTitle, Integer page,
+                                 String category) {
         Specification<Product> spec = Specification.where(null);
         if (minPrice != null) {
             spec = spec.and(ProductsSpecifications.priceGreaterOrEqualsThan(minPrice));
@@ -30,8 +32,11 @@ public class ProductsService {
         if (partTitle != null) {
             spec = spec.and(ProductsSpecifications.titleLike(partTitle));
         }
+        if (category != null) {
+            spec = spec.and(ProductsSpecifications.categoryLike(category));
+        }
 
-        return productsRepository.findAll(spec, PageRequest.of(page - 1, 50));
+        return productsRepository.findAll(spec, PageRequest.of(page - 1, 8));
     }
 
     public Optional<Product> findById(Long id) {
