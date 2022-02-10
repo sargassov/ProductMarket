@@ -1,7 +1,6 @@
 package com.geekbrains.spring.web.cart.controllers;
 
-
-import com.geekbrains.spring.web.api.cart.CartDto;
+import com.geekbrains.spring.web.api.carts.CartDto;
 import com.geekbrains.spring.web.api.dto.StringResponse;
 import com.geekbrains.spring.web.cart.converters.CartConverter;
 import com.geekbrains.spring.web.cart.integrations.RecommendServiceIntegration;

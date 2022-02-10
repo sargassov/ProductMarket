@@ -1,6 +1,5 @@
 package com.geekbrains.spring.web.cart.models;
 
-
 import com.geekbrains.spring.web.api.core.ProductDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,5 @@
 package com.geekbrains.spring.web.api.core;
 
-
 import java.util.List;
 
 public class OrderDto {
@@ -10,18 +9,6 @@ public class OrderDto {
     private Integer totalPrice;
     private String address;
     private String phone;
-
-    public OrderDto() {
-    }
-
-    public OrderDto(Long id, String username, List<OrderItemDto> items, Integer totalPrice, String address, String phone) {
-        this.id = id;
-        this.username = username;
-        this.items = items;
-        this.totalPrice = totalPrice;
-        this.address = address;
-        this.phone = phone;
-    }
 
     public Long getId() {
         return id;
@@ -68,6 +55,18 @@ public class OrderDto {
     }
 
     public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public OrderDto() {
+    }
+
+    public OrderDto(Long id, String username, List<OrderItemDto> items, Integer totalPrice, String address, String phone) {
+        this.id = id;
+        this.username = username;
+        this.items = items;
+        this.totalPrice = totalPrice;
+        this.address = address;
         this.phone = phone;
     }
 }

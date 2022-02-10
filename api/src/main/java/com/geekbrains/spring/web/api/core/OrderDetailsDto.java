@@ -1,18 +1,8 @@
 package com.geekbrains.spring.web.api.core;
 
-
-
 public class OrderDetailsDto {
     private String address;
     private String phone;
-
-    public OrderDetailsDto() {
-    }
-
-    public OrderDetailsDto(String address, String phone) {
-        this.address = address;
-        this.phone = phone;
-    }
 
     public String getAddress() {
         return address;
@@ -27,6 +17,14 @@ public class OrderDetailsDto {
     }
 
     public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public OrderDetailsDto() {
+    }
+
+    public OrderDetailsDto(String address, String phone) {
+        this.address = address;
         this.phone = phone;
     }
 }

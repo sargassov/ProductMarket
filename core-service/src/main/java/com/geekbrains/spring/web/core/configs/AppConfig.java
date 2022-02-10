@@ -15,18 +15,17 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class AppConfig {
-
     @Value("${integrations.cart-service.url}")
     private String cartServiceUrl;
 
     @Bean
-    public WebClient cartServiceWebClient(){
+    public WebClient cartServiceWebClient() {
         TcpClient tcpClient = TcpClient
                 .create()
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 2000)
-                .doOnConnected(c -> {
-                    c.addHandlerLast(new ReadTimeoutHandler(10000, TimeUnit.MILLISECONDS));
-                    c.addHandlerLast(new WriteTimeoutHandler(5000, TimeUnit.MILLISECONDS));
+                .doOnConnected(connection -> {
+                    connection.addHandlerLast(new ReadTimeoutHandler(10000, TimeUnit.MILLISECONDS));
+                    connection.addHandlerLast(new WriteTimeoutHandler(2000, TimeUnit.MILLISECONDS));
                 });
 
         return WebClient

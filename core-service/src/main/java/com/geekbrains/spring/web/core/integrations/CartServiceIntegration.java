@@ -1,6 +1,6 @@
 package com.geekbrains.spring.web.core.integrations;
 
-import com.geekbrains.spring.web.api.cart.CartDto;
+import com.geekbrains.spring.web.api.carts.CartDto;
 import com.geekbrains.spring.web.api.core.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +13,9 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class CartServiceIntegration {
-
     private final WebClient cartServiceWebClient;
 
-    public void clearUserCart(String username){
+    public void clearUserCart(String username) {
         cartServiceWebClient.get()
                 .uri("/api/v1/cart/0/clear")
                 .header("username", username)
@@ -25,8 +24,7 @@ public class CartServiceIntegration {
                 .block();
     }
 
-
-    public CartDto getUserCart(String username){
+    public CartDto getUserCart(String username) {
         CartDto cart = cartServiceWebClient.get()
                 .uri("/api/v1/cart/0")
                 .header("username", username)
