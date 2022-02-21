@@ -11,8 +11,7 @@
         <module>auth-service</module>
         <module>api</module>
 		<module>cart-service</module>
-        <module>recommend-service</module>
-    </modules>
+	</modules>
 
     <parent>
 		<groupId>org.springframework.boot</groupId>

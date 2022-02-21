@@ -8,5 +8,3 @@ utils:
 integrations:
   core-service:
     url: http://localhost:5555/core
-  recommend-service:
-    url: http://localhost:5555/recommend

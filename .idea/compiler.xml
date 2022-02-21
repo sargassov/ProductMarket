@@ -7,13 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="front-service" />
         <module name="auth-service" />
         <module name="cart-service" />
-        <module name="recommend-service" />
         <module name="api" />
         <module name="core-service" />
         <module name="gateway" />
+      </profile>
+      <profile name="Annotation profile for spring-web" enabled="true">
+        <sourceOutputDir name="../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="front-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,7 +25,6 @@
       <module name="cart-backend" target="11" />
       <module name="core-api" target="11" />
       <module name="core-backend" target="11" />
-      <module name="recomend-service" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -32,7 +35,6 @@
       <module name="core-service" options="-parameters" />
       <module name="front-service" options="-parameters" />
       <module name="gateway" options="-parameters" />
-      <module name="recommend-service" options="-parameters" />
       <module name="spring-web" options="-parameters" />
     </option>
   </component>

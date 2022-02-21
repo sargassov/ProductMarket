@@ -17,15 +17,6 @@ angular.module('market-front').controller('storeController', function ($scope, $
         });
     };
 
-    $scope.loadRecommends = function () {
-        $http({
-            url: 'http://localhost:5555/recommend/api/v1/recommends',
-            method: 'GET'
-        }).then(function (response) {
-            $scope.RecommendsList = response.data;
-        });
-    };
-
     $scope.generatePagesIndexes = function (startPage, endPage) {
         let arr = [];
         for (let i = startPage; i < endPage + 1; i++) {
@@ -37,10 +28,8 @@ angular.module('market-front').controller('storeController', function ($scope, $
     $scope.addToCart = function (productId) {
         $http.get('http://localhost:5555/cart/api/v1/cart/' + $localStorage.springWebGuestCartId + '/add/' + productId)
             .then(function (response) {
-                $scope.loadRecommends();
             });
     }
 
     $scope.loadProducts();
-    $scope.loadRecommends();
 });

@@ -3,7 +3,7 @@ package com.geekbrains.spring.web.cart.controllers;
 import com.geekbrains.spring.web.api.carts.CartDto;
 import com.geekbrains.spring.web.api.dto.StringResponse;
 import com.geekbrains.spring.web.cart.converters.CartConverter;
-import com.geekbrains.spring.web.cart.integrations.RecommendServiceIntegration;
+import com.geekbrains.spring.web.cart.exceptions.CartIsBrokenException;
 import com.geekbrains.spring.web.cart.models.Cart;
 import com.geekbrains.spring.web.cart.services.CartService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class CartsController {
     private final CartService cartService;
     private final CartConverter cartConverter;
-    private final RecommendServiceIntegration recommendServiceIntegration;
 
     @GetMapping("/{uuid}")
     public CartDto getCart(@RequestHeader(required = false) String username, @PathVariable String uuid) {
@@ -30,7 +29,6 @@ public class CartsController {
     @GetMapping("/{uuid}/add/{productId}")
     public void add(@RequestHeader(required = false) String username, @PathVariable String uuid, @PathVariable Long productId) {
         cartService.addToCart(getCurrentCartUuid(username, uuid), productId);
-        recommendServiceIntegration.addById(productId);
     }
 
     @GetMapping("/{uuid}/decrement/{productId}")
