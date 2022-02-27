@@ -9,10 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="auth-service" />
         <module name="cart-service" />
-        <module name="front-service" />
         <module name="api" />
         <module name="core-service" />
         <module name="gateway" />
+      </profile>
+      <profile name="Annotation profile for spring-web" enabled="true">
+        <sourceOutputDir name="../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="front-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

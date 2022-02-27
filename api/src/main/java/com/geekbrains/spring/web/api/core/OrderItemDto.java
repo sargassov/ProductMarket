@@ -1,24 +1,12 @@
 package com.geekbrains.spring.web.api.core;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-
 import java.math.BigDecimal;
 
-@Schema(description = "Модель элемента корзины")
 public class OrderItemDto {
-    @Schema(description = "ID продукта", required = true, example = "1")
     private Long productId;
-
-    @Schema(description = "Название продукта", required = true, example = "Редька")
     private String productTitle;
-
-    @Schema(description = "Количество", required = true, example = "2")
     private int quantity;
-
-    @Schema(description = "Стоимость за штуку", required = true, example = "56.00")
     private BigDecimal pricePerProduct;
-
-    @Schema(description = "Итого", required = true, example = "112.00")
     private BigDecimal price;
 
     public Long getProductId() {

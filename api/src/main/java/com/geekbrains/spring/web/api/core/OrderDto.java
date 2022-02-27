@@ -1,30 +1,30 @@
 package com.geekbrains.spring.web.api.core;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-
 import java.math.BigDecimal;
 import java.util.List;
 
-@Schema(description = "Модель заказа")
 public class OrderDto {
-
-    @Schema(description = "ID заказа", required = true, example = "1")
     private Long id;
-
-    @Schema(description = "Имя пользователя", required = true, example = "Phillip")
     private String username;
-
-    @Schema(description = "Подробности заказа", required = true, example = "((Условный список покупок))")
     private List<OrderItemDto> items;
-
-    @Schema(description = "Полная цена", required = true, example = "1000.00")
     private BigDecimal totalPrice;
-
-    @Schema(description = "Адрес Доставки", required = true, example = "190000, Россия, Санкт-Петербург, Невский пр-кт, д.1")
     private String address;
-
-    @Schema(description = "Номер телефона заказчика", required = true, example = "+79000000000")
     private String phone;
+    private String status;
+
+    public String getStringStatus() {
+        return status;
+    }
+
+    public OrderStatus getStatus() {
+        if(status.equals("CREATED")) return OrderStatus.CREATED;
+        else if(status.equals("PAID")) return OrderStatus.PAID;
+        else return OrderStatus.CANCELLED;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status.toString();
+    }
 
     public Long getId() {
         return id;
@@ -77,12 +77,15 @@ public class OrderDto {
     public OrderDto() {
     }
 
-    public OrderDto(Long id, String username, List<OrderItemDto> items, BigDecimal totalPrice, String address, String phone) {
+    public OrderDto(Long id, String username, List<OrderItemDto> items,
+                    BigDecimal totalPrice, String address, String phone, OrderStatus status) {
         this.id = id;
         this.username = username;
         this.items = items;
         this.totalPrice = totalPrice;
         this.address = address;
         this.phone = phone;
+        this.status = status.toString();
+        System.out.println(status.toString());;
     }
 }

@@ -37,7 +37,7 @@ public class ProductsController {
     )
     @GetMapping
     public Page<ProductDto> getAllProducts(
-            @RequestParam (name = "p", defaultValue = "1") Integer page,
+            @RequestParam(name = "p", defaultValue = "1") Integer page,
             @RequestParam(name = "min_price", required = false) Integer minPrice,
             @RequestParam(name = "max_price", required = false) Integer maxPrice,
             @RequestParam(name = "title_part", required = false) String titlePart
@@ -68,17 +68,7 @@ public class ProductsController {
     }
 
     @PostMapping
-    @Operation(
-            summary = "Запрос на добавление продукта в базу данных",
-            responses = {
-                    @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
-                            content = @Content(schema = @Schema(implementation = ProductDto.class))
-                    )
-            }
-    )
-    public ProductDto saveNewProduct(@RequestBody @Parameter(description = "Сохраняемый продукт",
-            required = true) ProductDto productDto) {
+    public ProductDto saveNewProduct(@RequestBody ProductDto productDto) {
         productValidator.validate(productDto);
         Product product = productConverter.dtoToEntity(productDto);
         product = productsService.save(product);
@@ -86,34 +76,14 @@ public class ProductsController {
     }
 
     @PutMapping
-    @Operation(
-            summary = "Запрос на изменение параметров конркетного продукта",
-            responses = {
-                    @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
-                            content = @Content(schema = @Schema(implementation = ProductDto.class))
-                    )
-            }
-    )
-    public ProductDto updateProduct(@RequestBody @Parameter(description = "Обновляемый продукт",
-            required = true) ProductDto productDto) {
+    public ProductDto updateProduct(@RequestBody ProductDto productDto) {
         productValidator.validate(productDto);
         Product product = productsService.update(productDto);
         return productConverter.entityToDto(product);
     }
 
     @DeleteMapping("/{id}")
-    @Operation(
-            summary = "Запрос на удаление продукта по ID",
-            responses = {
-                    @ApiResponse(
-                            description = "Успешный ответ", responseCode = "200",
-                            content = @Content(schema = @Schema)
-                    )
-            }
-    )
-    public void deleteById(@PathVariable @Parameter(description = "Идентификатор продукта",
-            required = true) Long id) {
+    public void deleteById(@PathVariable Long id) {
         productsService.deleteById(id);
     }
 }

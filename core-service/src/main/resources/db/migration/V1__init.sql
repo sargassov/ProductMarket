@@ -8,17 +8,17 @@ create table products
 );
 
 insert into products (title, price)
-values ('Milk', 100.20),
-       ('Bread', 80.20),
-       ('Cheese', 90.20),
-       ('Cheese2', 90.00),
-       ('Cheese3', 90.00),
-       ('Cheese4', 90.00),
-       ('Cheese5', 90.00),
-       ('Cheese6', 90.00),
-       ('Cheese7', 90.00),
-       ('Cheese8', 90.00),
-       ('Cheese9', 90.00);
+values ('Молоко', 100.20),
+       ('Хлеб', 80.20),
+       ('Сыр', 190.20),
+       ('Икра Красная', 690.00),
+       ('Яйца', 65.00),
+       ('Мука', 44.00),
+       ('Вода минеральная', 69.99),
+       ('Вино игристое', 745.00),
+       ('Гречневая крупа', 84.00),
+       ('Пиво', 99.00),
+       ('Хлопья овсяные', 71.00);
 
 create table orders
 (
@@ -27,6 +27,7 @@ create table orders
     total_price numeric(8, 2)  not null,
     address     varchar(255),
     phone       varchar(255),
+    status      int,
     created_at  timestamp default current_timestamp,
     updated_at  timestamp default current_timestamp
 );
@@ -43,11 +44,11 @@ create table order_items
     updated_at        timestamp default current_timestamp
 );
 
-insert into orders (username, total_price, address, phone)
-values ('bob', 200.00, 'address', '12345');
+insert into orders (username, total_price, address, phone, status)
+values ('bob', 2960.40, '190000, Россия, Санкт-Петербург, Невский пр-кт, д.1', '+79000000000', 0);
 
 insert into order_items (product_id, order_id, quantity, price_per_product, price)
-values (1, 1, 2, 100.00, 200.00);
+values (1, 1, 2, 100.20, 200.40), (4, 1, 4, 690.00, 2760.00);
 
 
 
