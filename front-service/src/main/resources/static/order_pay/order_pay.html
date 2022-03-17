@@ -1,0 +1,33 @@
+<div>
+    <p></p>
+    <h3>Ваш заказ</h3>
+    <table class="table table-hover">
+        <h4>Детали заказа: {{order.id}}</h4>
+        <p></p>
+        <tr>
+            <td>Название</td>
+            <td>Цена за штуку</td>
+            <td>Количество</td>
+            <td>Цена</td>
+            <td></td>
+        </tr>
+        <tbody>
+        <tr ng-repeat="i in order.items">
+            <td>{{i.productTitle}}</td>
+            <td>{{i.pricePerProduct}}</td>
+            <td>{{i.quantity}}</td>
+            <td>{{i.price}}</td>
+        </tr>
+    </table>
+
+    <span>Цена: {{order.totalPrice}} рублей</span>
+    <p></p>
+    <span>Адрес: {{order.address}}</span>
+    <p></p>
+    <span>Телефон: {{order.phone}}</span>
+    <p></p>
+
+    <p></p>
+    <h3>Оплатить</h3>
+    <div id="paypal-buttons"></div>
+</div>

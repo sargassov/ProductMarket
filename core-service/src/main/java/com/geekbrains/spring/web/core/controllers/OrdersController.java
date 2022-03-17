@@ -33,6 +33,6 @@ public class OrdersController {
 
     @GetMapping("/{id}")
     public OrderDto getOrderById(@PathVariable Long id) {
-        return orderConverter.entityToDto(orderService.findById(id).orElseThrow(() -> new ResourceNotFoundException("ORDER 404")));
+        return orderConverter.entityToDto(orderService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order not found, id: " + id)));
     }
 }
