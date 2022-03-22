@@ -5,6 +5,7 @@ import com.geekbrains.spring.web.auth.dto.JwtRequest;
 import com.geekbrains.spring.web.auth.dto.JwtResponse;
 import com.geekbrains.spring.web.auth.services.UserService;
 import com.geekbrains.spring.web.auth.utils.JwtTokenUtil;
+import com.geekbrains.spring.web.auth.validators.AuthValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,11 @@ public class AuthController {
     private final UserService userService;
     private final JwtTokenUtil jwtTokenUtil;
     private final AuthenticationManager authenticationManager;
+    private final AuthValidator authValidator;
 
     @PostMapping("/auth")
     public ResponseEntity<?> createAuthToken(@RequestBody JwtRequest authRequest) {
+        authValidator.validate(authRequest);
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         } catch (BadCredentialsException e) {
