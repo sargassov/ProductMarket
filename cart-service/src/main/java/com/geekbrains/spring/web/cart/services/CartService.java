@@ -65,7 +65,7 @@ public class CartService {
         updateCart(userCartKey, userCart);
     }
 
-    private void execute(String cartKey, Consumer<Cart> action) {
+    public void execute(String cartKey, Consumer<Cart> action) {
         Cart cart = getCurrentCart(cartKey);
         action.accept(cart);
         redisTemplate.opsForValue().set(cartKey, cart);

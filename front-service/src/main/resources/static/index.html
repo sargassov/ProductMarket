@@ -33,6 +33,9 @@
                 <li class="nav-item" ng-show="isUserLoggedIn()">
                     <a class="nav-link" href="#!/orders">Мои заказы</a>
                 </li>
+                <li class="nav-item" ng-show="!isUserLoggedIn()">
+                    <a class="nav-link" href="#!/reg">Зарегистрироваться</a>
+                </li>
 
                 <li class="nav-item" ng-show="!isUserLoggedIn()">
                     <form class="align-middle" ng-submit="tryToAuth()">
@@ -49,8 +52,9 @@
                         </div>
                     </form>
                 </li>
-                <li class="nav-item" ng-show="isUserLoggedIn()" style="padding: 4px;">
-                    <button class="btn btn-outline-secondary btn-sm" ng-click="tryToLogout()">Выйти</button>
+
+                <li class="nav-item" ng-show="isUserLoggedIn()">
+                    <a class="nav-link" href="#!/orders">Мои заказы</a>
                 </li>
             </ul>
         </div>
@@ -64,6 +68,7 @@
     <script src="orders/orders.js"></script>
     <script src="order_pay/order_pay.js"></script>
     <script src="welcome/welcome.js"></script>
+    <script src="reg/reg.js"></script>
     <script
             src="https://www.paypal.com/sdk/js?client-id=AZX9sEz_m_KSN8L6yOcKLZMq4BJ5bJ1uRpNzPE_5PqswQIRysphIDBii578puqKFxEEP-3QoK5O6Kk94&currency=RUB">
     </script>
